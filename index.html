@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Love</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            text-align: center;
+        }
+        .container {
+            padding: 20px;
+            z-index: 1;
+            max-width: 90%;
+        }
+        h1 { color: #ff4b2b; margin-bottom: 10px; }
+        p {
+            line-height: 1.6;
+            font-size: 1.1rem;
+            animation: fadeIn 3s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .heart {
+            position: absolute;
+            color: #ff4b2b;
+            font-size: 20px;
+            animation: float 5s linear infinite;
+            opacity: 0;
+        }
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Happy Birthday! 🎂🥳</h1>
+        <p>
+            Happy birthday to my beautiful girl! <br><br>
+            I just wanted to take a moment today to tell you how much I truly love you 
+            and how happy you make me. 🤍 Honestly, I miss you every single day, 
+            but today it hits so much harder because all I want is to be right there 
+            with you, holding you close. 😭🫂 <br><br>
+            I’m so incredibly thankful that we found each other; you’re my safe place 
+            and the most precious person I’ve ever known. 💎🌷✨ <br><br>
+            I really want to stay by your side forever and be the one who always 
+            looks after you, because you deserve the whole world. 🌍💗 <br><br>
+            Thank you for your kindness and for just being exactly who you are. 🧿💌 <br><br>
+            Enjoy every moment of your day, my queen and my everything! 👸👑 <br>
+            <strong>I love you endlessly! 👩‍❤️‍👨💞💋</strong>
+        </p>
+    </div>
+
+    <script>
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 5000);
+        }
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>
