@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Keerthika ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background: linear-gradient(135deg, #fceabb 0%, #f8b500 50%, #f78900 100%); /* Warm sunset glow */
+            background-attachment: fixed;
+            font-family: 'Poppins', sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            color: #2d3436;
+        }
+
+        /* Glassmorphism Card */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 40px 30px;
+            width: 90%;
+            max-width: 450px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            z-index: 10;
+            text-align: center;
+            display: none; /* Hidden until button click */
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: #d63031;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.8;
+            font-weight: 400;
+            color: #2d3436;
+        }
+
+        .highlight {
+            font-weight: 600;
+            color: #d63031;
+        }
+
+        /* Initial Button Style */
+        #start-btn {
+            padding: 15px 35px;
+            font-size: 1.2rem;
+            background: #d63031;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(214, 48, 49, 0.4);
+            z-index: 20;
+            transition: 0.3s;
+        }
+
+        #start-btn:active { transform: scale(0.95); }
+
+        /* Floating Hearts Animation */
+        .heart {
+            position: absolute;
+            pointer-events: none;
+            z-index: 1;
+            animation: moveUp 4s linear forwards;
+        }
+
+        @keyframes moveUp {
+            0% { transform: translateY(100vh) scale(0); opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <button id="start-btn">For Keerthika 💌</button>
+
+    <div class="glass-card" id="card">
+        <h1>Happy Birthday, Keerthika! 🎂🥳</h1>
+        <p>
+            I just wanted to take a moment today to tell you how much I truly love you 
+            and how happy you make me. 🤍 <br><br>
+            Honestly, I miss you every single day, but today it hits so much harder 
+            because all I want is to be right there with you, holding you close. 😭🫂 <br><br>
+            I’m so incredibly thankful that we found each other; you’re my safe place 
+            and the <span class="highlight">most precious person</span> I’ve ever known. 💎🌷✨ <br><br>
+            I really want to stay by your side forever and be the one who always looks 
+            after you, because you deserve the whole world. 🌍💗 <br><br>
+            Enjoy every moment of your day, my queen and my everything! 👸👑 <br>
+            <strong>I love you endlessly! 👩‍❤️‍👨💞💋</strong>
+        </p>
+    </div>
+
+    <script>
+        const btn = document.getElementById('start-btn');
+        const card = document.getElementById('card');
+
+        btn.addEventListener('click', () => {
+            btn.style.display = 'none';
+            card.style.display = 'block';
+            startHearts();
+        });
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = ['❤️', '💖', '✨', '🌸'][Math.floor(Math.random() * 4)];
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.fontSize = Math.random() * 20 + 15 + 'px';
+            heart.style.duration = Math.random() * 2 + 3 + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 4000);
+        }
+
+        function startHearts() {
+            setInterval(createHeart, 250);
+        }
+    </script>
+</body>
+</html>
