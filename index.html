@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,9 +8,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #ff4d6d;
-            --secondary-color: #fff0f3;
-            --accent-gold: #ffb703;
+            --rose-gold: #e5989b;
+            --deep-burgundy: #2d0b0e;
+            --soft-white: #f8edeb;
         }
 
         body, html {
@@ -17,122 +18,120 @@
             padding: 0;
             height: 100%;
             width: 100%;
-            background: radial-gradient(circle at center, #2b0d0d 0%, #000000 100%);
+            background: radial-gradient(circle at center, #4a1014 0%, #1a0506 100%);
             font-family: 'Montserrat', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             overflow: hidden;
-            color: white;
+            color: var(--soft-white);
         }
 
-        /* Ambient Glow Background */
-        .glow {
+        /* Animated Background Glows */
+        .bg-glow {
             position: absolute;
-            width: 300px;
-            height: 300px;
-            background: var(--primary-color);
-            filter: blur(150px);
-            opacity: 0.3;
-            z-index: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/stardust.png');
+            opacity: 0.2;
+            z-index: 1;
         }
 
-        /* The Envelope/Button Container */
-        .envelope-wrapper {
-            z-index: 10;
-            text-align: center;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .envelope-wrapper:hover { transform: scale(1.05); }
-
-        .envelope-icon {
-            font-size: 80px;
-            filter: drop-shadow(0 0 20px var(--primary-color));
-            margin-bottom: 20px;
-            display: block;
-        }
-
-        /* Premium Glass Card */
+        /* Premium Letter Card */
         #message-card {
             display: none;
-            width: 90%;
-            max-width: 400px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 30px;
-            padding: 40px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
-            z-index: 20;
+            width: 85%;
+            max-width: 420px;
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 40px;
+            padding: 45px 35px;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.8);
+            z-index: 10;
             text-align: center;
-            animation: slideUp 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+            animation: elegantFade 2s cubic-bezier(0.19, 1, 0.22, 1);
         }
 
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(50px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes elegantFade {
+            from { opacity: 0; transform: scale(0.9) translateY(30px); filter: blur(10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
+        }
+
+        /* Interactive Envelope Wrapper */
+        .envelope-container {
+            z-index: 20;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.5s ease;
+        }
+
+        .envelope-container:hover { transform: translateY(-10px); }
+
+        .heart-icon {
+            font-size: 100px;
+            color: #ff4d6d;
+            filter: drop-shadow(0 0 30px rgba(255, 77, 109, 0.6));
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
         }
 
         h1 {
             font-family: 'Dancing Script', cursive;
-            font-size: 2.8rem;
-            color: var(--primary-color);
+            font-size: 3rem;
+            color: var(--rose-gold);
             margin-bottom: 25px;
-            text-shadow: 0 0 15px rgba(255, 77, 109, 0.4);
+            font-weight: 700;
         }
 
-        .letter-content {
+        .content {
             font-size: 0.95rem;
-            line-height: 1.8;
-            color: #e0e0e0;
-            letter-spacing: 0.5px;
+            line-height: 2;
+            letter-spacing: 0.8px;
+            color: rgba(248, 237, 235, 0.9);
         }
 
-        .highlight {
-            color: var(--accent-gold);
-            font-weight: 500;
-        }
-
-        /* Sparkle Particle */
-        .particle {
+        /* Floating Bokeh Effect */
+        .bokeh {
             position: absolute;
-            background: white;
             border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,183,195,0.4) 0%, rgba(255,183,195,0) 70%);
+            filter: blur(5px);
             pointer-events: none;
-            opacity: 0.5;
-            animation: twinkle var(--d) linear infinite;
+            z-index: 2;
+            animation: floatAround 10s infinite linear;
         }
 
-        @keyframes twinkle {
-            0% { transform: translateY(0) scale(0); opacity: 0; }
-            50% { opacity: 0.8; }
-            100% { transform: translateY(-100vh) scale(1); opacity: 0; }
+        @keyframes floatAround {
+            0% { transform: translate(0, 0) scale(1); opacity: 0; }
+            50% { opacity: 0.6; }
+            100% { transform: translate(100px, -200px) scale(1.5); opacity: 0; }
         }
     </style>
 </head>
 <body>
 
-    <div class="glow"></div>
+    <div class="bg-glow"></div>
 
-    <div class="envelope-wrapper" id="opener">
-        <span class="envelope-icon">💌</span>
-        <p style="letter-spacing: 3px; font-size: 0.8rem; text-transform: uppercase;">Tap to open for Keerthika</p>
+    <div class="envelope-container" id="opener">
+        <div class="heart-icon">❤️</div>
+        <p style="margin-top: 20px; letter-spacing: 4px; font-size: 0.7rem; color: var(--rose-gold); text-transform: uppercase;">A Message for Keerthika</p>
     </div>
 
     <div id="message-card">
-        <h1>Happy Birthday, Keerthika! 🎂</h1>
-        <div class="letter-content">
-            I just wanted to take a moment today to tell you how much I truly love you 
-            and how happy you make me. 🤍 <br><br>
-            Honestly, I miss you every single day, but today it hits so much harder 
-            because all I want is to be right there with you, holding you close. 😭🫂 <br><br>
-            I’m so incredibly thankful that we found each other; you’re my safe place 
-            and the <span class="highlight">most precious person</span> I’ve ever known. ✨ <br><br>
-            I really want to stay by your side forever and be the one who always looks 
-            after you, because you deserve the whole world. 🌍💗 <br><br>
+        <h1>For Keerthika 🎂</h1>
+        <div class="content">
+            I wanted to take a moment on your special day to let you know how much I truly love you. 🤍 <br><br>
+            Honestly, I miss you every single day, but today it hits so much harder because I just want to be right there with you, holding you close. 😭🫂 <br><br>
+            I’m so thankful that we found each other; you’re my safe place and the <strong>most precious person</strong> I’ve ever known. ✨ <br><br>
+            I really want to stay by your side forever and take the best care of you, because you deserve the whole world. 🌍💗 <br><br>
+            Enjoy your day to the fullest, my queen and my everything! 👸👑 <br>
             <strong>I love you endlessly! 👩‍❤️‍👨💞💋</strong>
         </div>
     </div>
@@ -142,23 +141,25 @@
         const card = document.getElementById('message-card');
 
         opener.addEventListener('click', () => {
-            opener.style.display = 'none';
-            card.style.display = 'block';
-            createParticles();
+            opener.style.opacity = '0';
+            setTimeout(() => {
+                opener.style.display = 'none';
+                card.style.display = 'block';
+            }, 500);
+            createBokeh();
         });
 
-        function createParticles() {
-            for(let i = 0; i < 50; i++) {
-                const p = document.createElement('div');
-                p.className = 'particle';
-                const size = Math.random() * 3 + 'px';
-                p.style.width = size;
-                p.style.height = size;
-                p.style.left = Math.random() * 100 + 'vw';
-                p.style.top = '100vh';
-                p.style.setProperty('--d', (Math.random() * 3 + 2) + 's');
-                p.style.animationDelay = Math.random() * 2 + 's';
-                document.body.appendChild(p);
+        function createBokeh() {
+            for(let i = 0; i < 20; i++) {
+                const b = document.createElement('div');
+                b.className = 'bokeh';
+                const size = Math.random() * 80 + 40 + 'px';
+                b.style.width = size;
+                b.style.height = size;
+                b.style.left = Math.random() * 100 + 'vw';
+                b.style.top = Math.random() * 100 + 'vh';
+                b.style.animationDelay = Math.random() * 5 + 's';
+                document.body.appendChild(b);
             }
         }
     </script>
